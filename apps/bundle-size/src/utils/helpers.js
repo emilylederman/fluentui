@@ -1,5 +1,16 @@
 // @ts-check
 
+const prettyBytes = require('pretty-bytes');
+
+/**
+ * @param {number} value
+ *
+ * @return {string}
+ */
+function formatBytes(value) {
+  return prettyBytes(value, { maximumFractionDigits: 3 });
+}
+
 /**
  * @param {[number, number]} hrtime
  * @return {string}
@@ -11,5 +22,6 @@ function hrToSeconds(hrtime) {
 }
 
 module.exports = {
+  formatBytes,
   hrToSeconds,
 };

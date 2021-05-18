@@ -9,11 +9,13 @@ const webpack = require('webpack');
 
 const { hrToSeconds } = require('./helpers');
 
+/** @typedef {import("webpack").Configuration} WebpackConfiguration */
+
 /**
  * @param {string} fixturePath
  * @param {string} outputPath
  *
- * @return {import("webpack").Configuration}
+ * @return {WebpackConfiguration}
  */
 function createWebpackConfig(fixturePath, outputPath) {
   return {
@@ -49,7 +51,7 @@ function createWebpackConfig(fixturePath, outputPath) {
 }
 
 /**
- * @param {import("webpack").Configuration} webpackConfig
+ * @param {WebpackConfiguration} webpackConfig
  * @return {Promise<null>}
  */
 function webpackAsync(webpackConfig) {
