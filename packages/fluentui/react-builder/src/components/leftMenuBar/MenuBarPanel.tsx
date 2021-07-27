@@ -3,14 +3,14 @@ import { Header, Label, Menu } from '@fluentui/react-northstar';
 import { tabListBehavior } from '@fluentui/accessibility';
 import { AccessibilityTabPanel } from './tabPanels/AccessibilityTabPanel';
 import { NavigatorTabPanel } from './tabPanels/NavigationTabPanel';
-import { NavBarItem } from './MenuBarNavItem';
+import { MenuBarNavItem } from './MenuBarNavItem';
 import { AddIcon, MenuIcon, AccessibilityIcon } from '@fluentui/react-icons-northstar';
 import { useMode } from '../../hooks/useMode';
 import { JSONTreeElement } from '../types';
 import { AccessibilityError } from '../../accessibility/types';
 import { AddTabPanel } from './tabPanels/AddTabPanel';
 
-export type NavigationPanelProps = {
+export type MenuBarPanelProps = {
   accessibilityErrors: AccessibilityError[];
   activeTab: string;
   jsonTree: JSONTreeElement;
@@ -26,7 +26,7 @@ export type NavigationPanelProps = {
   selectedComponent?: JSONTreeElement;
 };
 
-export const NavigationPanel: React.FunctionComponent<NavigationPanelProps> = (props: NavigationPanelProps) => {
+export const MenuBarPanel: React.FunctionComponent<MenuBarPanelProps> = (props: MenuBarPanelProps) => {
   const [{ mode }] = useMode();
 
   const accessErrorLabelStyle = {
@@ -49,7 +49,7 @@ export const NavigationPanel: React.FunctionComponent<NavigationPanelProps> = (p
         <Label
           style={{
             justifyContent: 'center',
-            fontSize: '.2em',
+            fontSize: '.75em',
             userSelect: 'none',
             MozUserSelect: '-moz-none',
             WebkitUserSelect: 'none',
@@ -87,21 +87,21 @@ export const NavigationPanel: React.FunctionComponent<NavigationPanelProps> = (p
           }),
         })}
       >
-        <NavBarItem
+        <MenuBarNavItem
           title="Add components"
           isSelected={props.activeTab === 'add'}
           icon={<AddIcon size="large" outline />}
           onClickHandler={() => props.onSwitchTab('add')}
         />
 
-        <NavBarItem
+        <MenuBarNavItem
           title="Accessibility"
           isSelected={props.activeTab === 'accessibility'}
           icon={accessibilityIcon}
           onClickHandler={() => props.onSwitchTab('accessibility')}
         />
 
-        <NavBarItem
+        <MenuBarNavItem
           title="Navigator"
           isSelected={props.activeTab === 'nav'}
           icon={<MenuIcon size="large" outline />}

@@ -1,14 +1,19 @@
 import * as React from 'react';
 import { Box, Tooltip, Menu } from '@fluentui/react-northstar';
 
-export type NavBarItemProps = {
+export type MenuBarNavItemProps = {
   title: string;
   icon: any;
   isSelected: boolean;
   onClickHandler: () => void;
 };
 
-export const NavBarItem: React.FunctionComponent<NavBarItemProps> = ({ title, icon, isSelected, onClickHandler }) => {
+export const MenuBarNavItem: React.FunctionComponent<MenuBarNavItemProps> = ({
+  title,
+  icon,
+  isSelected,
+  onClickHandler,
+}) => {
   return (
     <Box
       styles={({ theme }) => ({

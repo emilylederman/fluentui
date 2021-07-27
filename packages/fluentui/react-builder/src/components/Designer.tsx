@@ -392,6 +392,7 @@ export const Designer: React.FunctionComponent = () => {
         onEnableVirtualCursor={handleEnableVirtualCursorChange}
         style={{ flex: '0 0 auto', width: '100%', height: HEADER_HEIGHT }}
       />
+
       <Builder
         accessibilityErrors={accessibilityErrors}
         activeTab={activeTab}

@@ -2,7 +2,7 @@ import * as React from 'react';
 import { AccessibilityError } from '../accessibility/types';
 import { CanvasWindow } from './canvasWindow/CanvasWindow';
 import { ComponentPropertiesPanel } from './componentInfoPanel/ComponentPropertiesPanel';
-import { NavigationPanel } from './leftMenuBar/MenuBarPanel';
+import { MenuBarPanel } from './leftMenuBar/MenuBarPanel';
 import { DesignerMode, JSONTreeElement } from './types';
 import { DesignerState } from '../state/state';
 import { ComponentInfo } from '../componentInfo/types';
@@ -51,7 +51,7 @@ export type BuilderProps = {
 export const Builder: React.FunctionComponent<BuilderProps> = (props: BuilderProps) => {
   return (
     <div style={{ display: 'flex', flex: 1, minWidth: '10rem', overflow: 'hidden' }}>
-      <NavigationPanel
+      <MenuBarPanel
         accessibilityErrors={props.accessibilityErrors}
         activeTab={props.activeTab}
         jsonTree={props.jsonTree}

@@ -4,6 +4,7 @@ import {
   Button,
   Image,
   MenuButton,
+  Text,
   Toolbar as FUIToolbar,
   ToolbarItemProps,
   Tooltip,
@@ -52,8 +53,18 @@ export const Toolbar: React.FunctionComponent<ToolbarProps> = ({
   style,
 }) => {
   const [showVcInfo, setShowVcInfo] = React.useState(false);
-  const [menuOpen, setMenuOpen] = React.useState(false);
 
+  // todo make designermode an enum!!!!
+  const modeLabel = (toolbarModeItem: DesignerMode) =>
+    toolbarModeItem === mode ? (
+      <Text weight={'bold'} aria-label={`current mode: ${mode} `}>
+        {toolbarModeItem.replace(/^\w/, (c: string) => c.toUpperCase())}
+      </Text>
+    ) : (
+      <Text color={'#c8c6c4'} weight={'lighter'} aria-label={`switch to ${toolbarModeItem} `}>
+        {toolbarModeItem.replace(/^\w/, (c: string) => c.toUpperCase())}
+      </Text>
+    );
   return (
     <Box
       styles={({ theme }) => ({
@@ -77,42 +88,63 @@ export const Toolbar: React.FunctionComponent<ToolbarProps> = ({
           aria-label="Builder toolbar"
           items={[
             {
-              key: 'mode',
-              children: <b aria-label={`${mode} - change mode`}>{mode.replace(/^\w/, c => c.toUpperCase())} Mode</b>,
-              active: menuOpen,
-              menuOpen,
-
-              onMenuOpenChange: (_, { menuOpen }) => setMenuOpen(menuOpen),
-              menu: {
-                items: [
-                  {
-                    key: 'build',
-                    content: 'Build',
-                    onClick: () => {
-                      onModeChange('build');
-                      onEnableVirtualCursor(false);
-                    },
-                  },
-                  {
-                    key: 'design',
-                    content: 'Design',
-                    onClick: () => {
-                      onModeChange('design');
-                      onEnableVirtualCursor(false);
-                    },
-                  },
-                  {
-                    key: 'use',
-                    content: 'Use',
-                    onClick: () => {
-                      onModeChange('use');
-                    },
-                  },
-                ],
+              key: 'build',
+              title: 'Build Mode',
+              children: modeLabel('build'),
+              onClick: () => {
+                onModeChange('build');
+                onEnableVirtualCursor(false);
               },
             },
             {
               key: 'divider-1',
+              kind: 'divider',
+            },
+            {
+              key: 'design',
+              title: 'Design Mode',
+              children: modeLabel('design'),
+              onClick: () => {
+                onModeChange('design');
+                onEnableVirtualCursor(false);
+              },
+            },
+            {
+              key: 'divider-2',
+              kind: 'divider',
+            },
+            {
+              key: 'use',
+              title: 'Use Mode',
+              children: modeLabel('use'),
+              onClick: () => {
+                onModeChange('use');
+              },
+            },
+            mode === 'use'
+              ? ({
+                  key: 'screen-reader',
+                  icon: <TranslationIcon outline={true} />,
+                  kind: 'toggle',
+                  active: !!enabledVirtualCursor,
+                  title: 'Screen reader simulation',
+                  onClick: () => {
+                    onEnableVirtualCursor(!enabledVirtualCursor);
+                    setShowVcInfo(true);
+                    setTimeout(() => setShowVcInfo(false), 10000);
+                  },
+                  children: (C, p) => (
+                    <Tooltip
+                      accessibility={null}
+                      trigger={<C {...p} />}
+                      content={<span role="alert">Use "ctrl+," and "ctrl+." to navigate in the canvas</span>}
+                      open={enabledVirtualCursor && showVcInfo}
+                    />
+                  ),
+                } as ToolbarItemProps)
+              : undefined,
+            {
+              key: 'divider-3',
               kind: 'divider',
             },
             {
@@ -136,7 +168,7 @@ export const Toolbar: React.FunctionComponent<ToolbarProps> = ({
               },
             },
             {
-              key: 'divider-2',
+              key: 'divider-4',
               kind: 'divider',
             },
             {
@@ -148,28 +180,6 @@ export const Toolbar: React.FunctionComponent<ToolbarProps> = ({
                 onReset();
               },
             },
-            mode === 'use'
-              ? ({
-                  key: 'screen-reader',
-                  icon: <TranslationIcon outline={true} />,
-                  kind: 'toggle',
-                  active: !!enabledVirtualCursor,
-                  title: 'Screen reader simulation',
-                  onClick: () => {
-                    onEnableVirtualCursor(!enabledVirtualCursor);
-                    setShowVcInfo(true);
-                    setTimeout(() => setShowVcInfo(false), 10000);
-                  },
-                  children: (C, p) => (
-                    <Tooltip
-                      accessibility={null}
-                      trigger={<C {...p} />}
-                      content={<span role="alert">Use Ctrl+, and Ctrl+. to navigate in the canvas</span>}
-                      open={enabledVirtualCursor && showVcInfo}
-                    />
-                  ),
-                } as ToolbarItemProps)
-              : undefined,
           ]}
         />
       </div>
@@ -195,9 +205,11 @@ export const Toolbar: React.FunctionComponent<ToolbarProps> = ({
             },
           ]}
         />
+        ym b v{' '}
         <Button
           style={{ marginLeft: '.8rem' }}
           iconOnly
+          title={'Maximize builder'}
           icon={<OpenOutsideIcon outline />}
           aria-label="Popout"
           onClick={() => {
