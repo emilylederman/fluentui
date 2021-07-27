@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { ErrorIcon } from '@fluentui/react-icons-northstar';
 import { Accordion, List, Label } from '@fluentui/react-northstar';
-import { AccessibilityError } from '../accessibility/types';
+import { AccessibilityError } from '../../accessibility/types';
 
 export type ErrorPanelProps = {
   elementAccessibilityErrors: AccessibilityError[];

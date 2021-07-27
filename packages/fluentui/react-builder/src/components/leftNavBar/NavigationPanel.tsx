@@ -5,9 +5,9 @@ import { AccessibilityTabPanel } from './tabPanels/AccessibilityTabPanel';
 import { NavigatorTabPanel } from './tabPanels/NavigationTabPanel';
 import { NavBarItem } from './NavBarItem';
 import { AddIcon, MenuIcon, AccessibilityIcon } from '@fluentui/react-icons-northstar';
-import { useMode } from '../hooks/useMode';
-import { JSONTreeElement } from './types';
-import { AccessibilityError } from '../accessibility/types';
+import { useMode } from '../../hooks/useMode';
+import { JSONTreeElement } from '../types';
+import { AccessibilityError } from '../../accessibility/types';
 import { AddTabPanel } from './tabPanels/AddTabPanel';
 
 export type NavigationPanelProps = {

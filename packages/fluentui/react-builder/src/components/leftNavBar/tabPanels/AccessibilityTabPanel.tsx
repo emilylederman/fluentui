@@ -1,8 +1,8 @@
 import * as React from 'react';
 
-import { JSONTreeElement } from '../types';
-import { AccessibilityError } from '../../accessibility/types';
-import { ComponentTree } from '../ComponentTree';
+import { JSONTreeElement } from '../../types';
+import { AccessibilityError } from '../../../accessibility/types';
+import { ComponentNavgiatorTree } from '../ComponentNavigatorTree';
 
 export type AccessibilityTabPanelProps = {
   accessibilityErrors: AccessibilityError[];
@@ -56,7 +56,7 @@ export const AccessibilityTabPanel: React.FunctionComponent<AccessibilityTabPane
       {(!updatedTree || updatedTree?.props?.children?.length === 0) && (
         <div style={{ padding: '10px' }}>No accessibility errors found.</div>
       )}
-      <ComponentTree
+      <ComponentNavgiatorTree
         onAddComponent={props.onAddComponent}
         onCloneComponent={props.onCloneComponent}
         onDeleteSelectedComponent={props.onDeleteSelectedComponent}

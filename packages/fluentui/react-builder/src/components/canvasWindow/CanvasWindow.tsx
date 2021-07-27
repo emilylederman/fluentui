@@ -2,15 +2,15 @@ import { CodeSandboxExporter, CodeSandboxState, renderElementToJSX } from '@flue
 import { FilesCodeIcon, AcceptIcon } from '@fluentui/react-icons-northstar';
 import { Button, Text } from '@fluentui/react-northstar';
 import * as React from 'react';
-import { AccessibilityError } from '../accessibility/types';
-import { getCodeSandboxInfo, renderJSONTreeToJSXElement } from '../config';
-import { useMode } from '../hooks/useMode';
-import { DesignerState } from '../state/state';
+import { AccessibilityError } from '../../accessibility/types';
+import { getCodeSandboxInfo, renderJSONTreeToJSXElement } from '../../config';
+import { useMode } from '../../hooks/useMode';
+import { DesignerState } from '../../state/state';
 import { BrowserWindow } from './BrowserWindow';
 import { Canvas } from './Canvas';
 import { ErrorBoundary } from './ErrorBoundary';
 import { GetShareableLink } from './GetShareableLink';
-import { JSONTreeElement } from './types';
+import { JSONTreeElement } from '../types';
 
 export type CanvasWindowProps = {
   selectedComponentAccessibilityErrors: AccessibilityError[];

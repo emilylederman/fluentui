@@ -2,9 +2,9 @@ import * as React from 'react';
 import * as _ from 'lodash';
 import { EventListener } from '@fluentui/react-component-event-listener';
 import { isBrowser } from '@fluentui/react-northstar';
-import { FiberNavigator } from '../../../react-northstar/src/components/Debug/FiberNavigator';
-import { fiberNavFindJSONTreeElement, jsonTreeFindParent } from '../config';
-import { JSONTreeElement } from './types';
+import { FiberNavigator } from '../../../../react-northstar/src/components/Debug/FiberNavigator';
+import { fiberNavFindJSONTreeElement, jsonTreeFindParent } from '../../config';
+import { JSONTreeElement } from '../types';
 
 export type DropSelectorProps = {
   onDropPositionChange: (dropParent: JSONTreeElement, dropIndex: number) => void;

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Alert, Dropdown, DropdownProps } from '@fluentui/react-northstar';
 import { Ref } from '@fluentui/react-component-ref';
-import { NarrationComputer, IAriaElement, SRNCPlatform } from './../narration/NarrationComputer';
+import { NarrationComputer, IAriaElement, SRNCPlatform } from '../narration/NarrationComputer';
 
 const computer: NarrationComputer = new NarrationComputer();
 let prevSelector: string = null;

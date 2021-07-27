@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { AccessibilityError } from '../accessibility/types';
-import { ComponentInfo } from '../componentInfo/types';
+import { AccessibilityError } from '../../accessibility/types';
+import { ComponentInfo } from '../../componentInfo/types';
 import { Description } from './Description';
 import { Knobs } from './Knobs';
-import { DesignerMode, JSONTreeElement } from './types';
+import { DesignerMode, JSONTreeElement } from '../types';
 
 type onPropChangeArgs = {
   jsonTreeElement: JSONTreeElement;

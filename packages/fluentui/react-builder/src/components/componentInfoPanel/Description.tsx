@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Header } from '@fluentui/react-northstar';
-import { ComponentInfo } from '../componentInfo/types';
-import { JSONTreeElement } from './types';
+import { ComponentInfo } from '../../componentInfo/types';
+import { JSONTreeElement } from '../types';
 
 export type DescriptionProps = {
   selectedJSONTreeElement: JSONTreeElement;

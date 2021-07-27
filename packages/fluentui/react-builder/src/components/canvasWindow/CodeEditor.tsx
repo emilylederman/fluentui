@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { Editor } from '@fluentui/docs-components';
 
-import { JSONTreeElement } from './types';
-import { codeToTree } from '../utils/codeToTree';
+import { JSONTreeElement } from '../types';
+import { codeToTree } from '../../utils/codeToTree';
 
 export type CodeEditorProps = {
   code: string;

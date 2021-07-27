@@ -2,16 +2,16 @@ import * as React from 'react';
 import Frame, { FrameContextConsumer } from 'react-frame-component';
 
 import { DebugSelector, FiberNavigator, Provider, teamsTheme } from '@fluentui/react-northstar';
-import { JSONTreeElement } from './types';
+import { JSONTreeElement } from '../types';
 import { EventListener } from '@fluentui/react-component-event-listener';
-import { fiberNavFindJSONTreeElement, fiberNavFindOwnerInJSONTree, renderJSONTreeToJSXElement } from '../config';
+import { fiberNavFindJSONTreeElement, fiberNavFindOwnerInJSONTree, renderJSONTreeToJSXElement } from '../../config';
 import { DebugFrame } from './DebugFrame';
 import { DropSelector } from './DropSelector';
-import { ReaderNarration } from './ReaderNarration';
-import { AccessibilityError } from '../accessibility/types';
-import { AbilityAttributesValidator } from '../accessibility/AbilityAttributesValidator';
+import { ReaderNarration } from '../../accessibility/ReaderNarration';
+import { AccessibilityError } from '../../accessibility/types';
+import { AbilityAttributesValidator } from '../../accessibility/AbilityAttributesValidator';
 
-const pkg = require('../../package.json');
+const pkg = require('../../../package.json');
 
 const axeVersion = pkg.dependencies['axe-core'];
 

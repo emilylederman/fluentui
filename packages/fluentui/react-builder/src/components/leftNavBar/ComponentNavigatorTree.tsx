@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { TreeItemProps, Tree, MenuButton } from '@fluentui/react-northstar';
 import { treeBehavior, treeAsListBehavior } from '@fluentui/accessibility';
-import { JSONTreeElement } from './types';
-import { jsonTreeFindElement } from '../config';
-import { CloneDebugButton, TrashDebugButton, MoveDebugButton } from './DebugButtons';
+import { JSONTreeElement } from '../types';
+import { jsonTreeFindElement } from '../../config';
+import { CloneDebugButton, TrashDebugButton, MoveDebugButton } from '../DebugButtons';
 
-export type ComponentTreeProps = {
+export type ComponentNavigatorTreeProps = {
   tree: JSONTreeElement;
   selectedComponent?: JSONTreeElement;
   onSelectComponent?: (jsonTreeElement: JSONTreeElement) => void;
@@ -120,7 +120,7 @@ const jsonTreeToTreeItems: (
   };
 };
 
-export const ComponentTree: React.FunctionComponent<ComponentTreeProps> = ({
+export const ComponentNavgiatorTree: React.FunctionComponent<ComponentNavigatorTreeProps> = ({
   tree,
   selectedComponent,
   onSelectComponent,

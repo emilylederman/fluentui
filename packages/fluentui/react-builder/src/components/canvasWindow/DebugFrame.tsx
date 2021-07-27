@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { CloneDebugButton, LevelUpDebugButton, TrashDebugButton } from './DebugButtons';
+import { CloneDebugButton, LevelUpDebugButton, TrashDebugButton } from '../DebugButtons';
 
 export type DebugFrameProps = {
   target;

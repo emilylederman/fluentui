@@ -2,9 +2,9 @@ import * as _ from 'lodash';
 import * as React from 'react';
 import { Box, Input, Tree, Tooltip } from '@fluentui/react-northstar';
 import { SearchIcon, TriangleDownIcon, TriangleEndIcon } from '@fluentui/react-icons-northstar';
-import { ComponentInfo } from '../componentInfo/types';
-import { componentInfoContext } from '../componentInfo/componentInfoContext';
-import { EXCLUDED_COMPONENTS, COMPONENT_GROUP } from '../config';
+import { ComponentInfo } from '../../componentInfo/types';
+import { componentInfoContext } from '../../componentInfo/componentInfoContext';
+import { EXCLUDED_COMPONENTS, COMPONENT_GROUP } from '../../config';
 
 export type ListProps = {
   onDragStart?: (componentInfo: ComponentInfo, e: MouseEvent) => void;

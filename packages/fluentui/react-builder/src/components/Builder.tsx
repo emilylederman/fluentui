@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { AccessibilityError } from '../accessibility/types';
-import { CanvasWindow } from './CanvasWindow';
-import { ComponentPropertiesPanel } from './ComponentPropertiesPanel';
-import { NavigationPanel } from './NavigationPanel';
+import { CanvasWindow } from './canvasWindow/CanvasWindow';
+import { ComponentPropertiesPanel } from './componentInfoPanel/ComponentPropertiesPanel';
+import { NavigationPanel } from './leftNavBar/NavigationPanel';
 import { DesignerMode, JSONTreeElement } from './types';
 import { DesignerState } from '../state/state';
 import { ComponentInfo } from '../componentInfo/types';
