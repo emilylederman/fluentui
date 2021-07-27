@@ -3,7 +3,7 @@ import { Header, Label, Menu } from '@fluentui/react-northstar';
 import { tabListBehavior } from '@fluentui/accessibility';
 import { AccessibilityTabPanel } from './tabPanels/AccessibilityTabPanel';
 import { NavigatorTabPanel } from './tabPanels/NavigationTabPanel';
-import { NavBarItem } from './NavBarItem';
+import { NavBarItem } from './MenuBarNavItem';
 import { AddIcon, MenuIcon, AccessibilityIcon } from '@fluentui/react-icons-northstar';
 import { useMode } from '../../hooks/useMode';
 import { JSONTreeElement } from '../types';

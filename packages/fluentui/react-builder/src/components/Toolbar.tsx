@@ -19,8 +19,6 @@ import {
 } from '@fluentui/react-icons-northstar';
 
 export type ToolbarProps = {
-  isExpanding: boolean;
-  isSelecting: boolean;
   canRedo: boolean;
   canUndo: boolean;
   onModeChange: (mode: DesignerMode) => void;
@@ -38,8 +36,6 @@ export type ToolbarProps = {
 };
 
 export const Toolbar: React.FunctionComponent<ToolbarProps> = ({
-  isExpanding,
-  isSelecting,
   canRedo,
   canUndo,
   onModeChange,

@@ -377,8 +377,6 @@ export const Designer: React.FunctionComponent = () => {
       )}
 
       <Toolbar
-        isExpanding={isExpanding}
-        isSelecting={isSelecting}
         mode={mode}
         onShowCodeChange={handleShowCodeChange}
         onShowJSONTreeChange={handleShowJSONTreeChange}

@@ -2,7 +2,7 @@ import * as React from 'react';
 import { AccessibilityError } from '../accessibility/types';
 import { CanvasWindow } from './canvasWindow/CanvasWindow';
 import { ComponentPropertiesPanel } from './componentInfoPanel/ComponentPropertiesPanel';
-import { NavigationPanel } from './leftNavBar/NavigationPanel';
+import { NavigationPanel } from './leftMenuBar/MenuBarPanel';
 import { DesignerMode, JSONTreeElement } from './types';
 import { DesignerState } from '../state/state';
 import { ComponentInfo } from '../componentInfo/types';
