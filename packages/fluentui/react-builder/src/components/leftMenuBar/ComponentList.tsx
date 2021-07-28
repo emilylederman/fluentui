@@ -1,6 +1,6 @@
 import * as _ from 'lodash';
 import * as React from 'react';
-import { Box, Input, Tree, Tooltip } from '@fluentui/react-northstar';
+import { Box, Input, Tree } from '@fluentui/react-northstar';
 import { SearchIcon, TriangleDownIcon, TriangleEndIcon } from '@fluentui/react-icons-northstar';
 import { ComponentInfo } from '../../componentInfo/types';
 import { componentInfoContext } from '../../componentInfo/componentInfoContext';
@@ -27,7 +27,7 @@ export const ComponentList: React.FunctionComponent<ListProps> = ({ onDragStart,
     setFilter(value);
   }, []);
 
-  const [supportedComponents, unsupportedComponents] = React.useMemo(
+  const [supportedComponents] = React.useMemo(
     () =>
       _.partition(_.values(componentInfoContext.byDisplayName), ({ displayName }) => {
         return displayName.match(filterRegexp) && !EXCLUDED_COMPONENTS.some(name => name === displayName);
@@ -57,13 +57,13 @@ export const ComponentList: React.FunctionComponent<ListProps> = ({ onDragStart,
             },
             items: supportedComponents
               .filter(info => COMPONENT_GROUP[key].includes(info.isChild ? info.parentDisplayName : info.displayName))
-              .map(info => ({
-                id: info.displayName,
+              .map(componentInfo => ({
+                id: componentInfo.displayName,
                 title: (
                   <Box
                     as="span"
-                    key={info.displayName}
-                    onMouseDown={handleMouseDown(info)}
+                    key={componentInfo.displayName.split(/(?=[A-Z])/).join(' ')}
+                    onMouseDown={handleMouseDown(componentInfo)}
                     styles={{
                       padding: '0.25rem 0.75rem',
                       cursor: 'pointer',
@@ -72,10 +72,10 @@ export const ComponentList: React.FunctionComponent<ListProps> = ({ onDragStart,
                         borderLeft: '2px solid #000',
                       },
                       borderLeft: '2px solid transparent',
-                      marginLeft: '2px',
                     }}
                   >
-                    {info.displayName}
+                    {console.log(componentInfo)}
+                    {componentInfo.displayName.split(/(?=[A-Z])/).join(' ')}
                   </Box>
                 ),
               })),
@@ -103,30 +103,13 @@ export const ComponentList: React.FunctionComponent<ListProps> = ({ onDragStart,
         onChange={handleFilterChange}
         value={filter}
       />
-      {filter ? <Tree items={treeItems} activeItemIds={treeItems.map(e => e.id)} /> : <Tree items={treeItems} />}
-      {unsupportedComponents
-        .filter(info => info.displayName.match(filterRegexp))
-        .map(info => (
-          <Tooltip
-            pointing
-            position="after"
-            align="center"
-            key={info.displayName}
-            trigger={
-              <Box
-                key={info.displayName}
-                styles={{
-                  padding: '0.2em 0.5em',
-                  background: '#eee',
-                  color: '#888',
-                }}
-              >
-                {info.displayName}
-              </Box>
-            }
-            content={info.docblock.description + info.docblock.tags}
-          />
-        ))}
+      <div>
+        {filter ? (
+          <Tree items={treeItems} activeItemIds={treeItems.map(e => e.id)} />
+        ) : (
+          <Tree items={treeItems} defaultActiveItemIds={treeItems.map(e => e.id)} />
+        )}
+      </div>
     </div>
   );
 };

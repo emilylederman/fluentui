@@ -17,8 +17,8 @@ const docsComponentsPackageJson = require('@fluentui/docs-components/package.jso
 export const EXCLUDED_COMPONENTS = ['Animation', 'Debug', 'Design', 'FocusZone', 'Portal', 'Provider', 'Ref'];
 
 export const COMPONENT_GROUP = {
-  Actionable: ['Button', 'MenuButton', 'SplitButton', 'Menu', 'Toolbar'],
-  Containers: ['Card', 'Carousel', 'Accordion', 'Segment', 'List', 'Tree', 'HierarchicalTree'],
+  Inputs: ['Button', 'MenuButton', 'SplitButton', 'Menu', 'Toolbar'],
+  Items: ['Card', 'Carousel', 'Accordion', 'Segment', 'List', 'Tree', 'HierarchicalTree'],
   Layouts: ['Box', 'Flex', 'Grid', 'Layout', 'Table', 'ItemLayout'],
   Content: [
     'Text',
