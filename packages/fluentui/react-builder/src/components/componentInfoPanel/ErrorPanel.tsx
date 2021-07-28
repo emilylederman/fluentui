@@ -22,11 +22,11 @@ export const ErrorPanel: React.FunctionComponent<ErrorPanelProps> = ({ elementAc
       <List
         styles={{ listStyleType: 'upper-roman' }}
         items={elementAccessibilityErrors.map(error => (
-          <div style={{ display: 'list-item', listStyle: 'outside' }}>
+          <div style={{ display: 'list-item', listStyle: 'outside', flexBasis: 'auto' }}>
             {error.message}
-            <br style={{ display: 'block', margin: '100vh' }} />
+            <br style={{ display: 'block' }} />
             <Label
-              style={{ marginTop: '.33vh', marginBottom: '1vh', fontSize: '.25em', color: '#606060' }}
+              style={{ marginTop: '.33vh', marginBottom: '1vh', fontSize: '.75em', color: '#606060' }}
               color={'grey'}
               content={error.source}
               fluid

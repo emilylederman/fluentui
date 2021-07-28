@@ -61,7 +61,7 @@ export const Toolbar: React.FunctionComponent<ToolbarProps> = ({
         {toolbarModeItem.replace(/^\w/, (c: string) => c.toUpperCase())}
       </Text>
     ) : (
-      <Text color={'#c8c6c4'} weight={'lighter'} aria-label={`switch to ${toolbarModeItem} `}>
+      <Text color={'#c8c6c4'} weight={'light'} aria-label={`switch to ${toolbarModeItem} `}>
         {toolbarModeItem.replace(/^\w/, (c: string) => c.toUpperCase())}
       </Text>
     );
@@ -205,7 +205,6 @@ export const Toolbar: React.FunctionComponent<ToolbarProps> = ({
             },
           ]}
         />
-        ym b v{' '}
         <Button
           style={{ marginLeft: '.8rem' }}
           iconOnly
