@@ -103,7 +103,7 @@ export const ComponentList: React.FunctionComponent<ListProps> = ({ onDragStart,
         onChange={handleFilterChange}
         value={filter}
       />
-      <div>
+      <div style={{ overflow: 'hidden' }}>
         {filter ? (
           <Tree items={treeItems} activeItemIds={treeItems.map(e => e.id)} />
         ) : (
