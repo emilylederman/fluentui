@@ -377,9 +377,11 @@ export const Designer: React.FunctionComponent = () => {
       )}
 
       <Toolbar
+        jsonTreeOrigin={state.jsonTreeOrigin}
         mode={mode}
         onShowCodeChange={handleShowCodeChange}
         onShowJSONTreeChange={handleShowJSONTreeChange}
+        onShareLink={getShareableLink}
         onUndo={handleUndo}
         onRedo={handleRedo}
         canUndo={state.history.length > 0}
@@ -396,7 +398,6 @@ export const Designer: React.FunctionComponent = () => {
       <Builder
         accessibilityErrors={accessibilityErrors}
         activeTab={activeTab}
-        getShareableLink={getShareableLink}
         isExpanding={isExpanding}
         isSelecting={isSelecting}
         jsonTree={jsonTree}

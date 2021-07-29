@@ -18,10 +18,15 @@ import {
   RedoIcon,
   TranslationIcon,
 } from '@fluentui/react-icons-northstar';
+import { GetShareableLink } from './canvasWindow/GetShareableLink';
+import { JSONTreeOrigin } from '../state/state';
 
 export type ToolbarProps = {
+  jsonTreeOrigin: JSONTreeOrigin;
   canRedo: boolean;
   canUndo: boolean;
+
+  onShareLink: () => string;
   onModeChange: (mode: DesignerMode) => void;
   onReset: () => void;
   onUndo: () => void;
@@ -37,8 +42,10 @@ export type ToolbarProps = {
 };
 
 export const Toolbar: React.FunctionComponent<ToolbarProps> = ({
+  jsonTreeOrigin,
   canRedo,
   canUndo,
+  onShareLink,
   onModeChange,
   onReset,
   onUndo,
@@ -89,7 +96,7 @@ export const Toolbar: React.FunctionComponent<ToolbarProps> = ({
           items={[
             {
               key: 'build',
-              title: 'Build Mode',
+              title: 'Build',
               children: modeLabel('build'),
               onClick: () => {
                 onModeChange('build');
@@ -102,7 +109,7 @@ export const Toolbar: React.FunctionComponent<ToolbarProps> = ({
             },
             {
               key: 'design',
-              title: 'Design Mode',
+              title: 'Design',
               children: modeLabel('design'),
               onClick: () => {
                 onModeChange('design');
@@ -115,7 +122,7 @@ export const Toolbar: React.FunctionComponent<ToolbarProps> = ({
             },
             {
               key: 'use',
-              title: 'Use Mode',
+              title: 'Use',
               children: modeLabel('use'),
               onClick: () => {
                 onModeChange('use');
@@ -185,7 +192,14 @@ export const Toolbar: React.FunctionComponent<ToolbarProps> = ({
       </div>
       <div style={{ display: 'flex', alignItems: 'center', marginLeft: 'auto' }}>
         <MenuButton
-          trigger={<Button iconOnly icon={<CodeSnippetIcon outline />} aria-label="Show code" />}
+          trigger={
+            <Button
+              iconOnly
+              icon={<CodeSnippetIcon outline />}
+              aria-label="Show code or JSON"
+              title="Show code or JSON"
+            />
+          }
           menu={[
             {
               key: 'code',
@@ -205,12 +219,16 @@ export const Toolbar: React.FunctionComponent<ToolbarProps> = ({
             },
           ]}
         />
+
+        {jsonTreeOrigin === 'store' && (
+          <GetShareableLink style={{ marginLeft: '.8rem' }} getShareableLink={onShareLink} />
+        )}
         <Button
           style={{ marginLeft: '.8rem' }}
           iconOnly
           title={'Maximize builder'}
           icon={<OpenOutsideIcon outline />}
-          aria-label="Popout"
+          aria-label="Maximize builder"
           onClick={() => {
             window.open(`/builder/maximize${window.location.hash}`, '_blank', 'noopener noreferrer');
           }}

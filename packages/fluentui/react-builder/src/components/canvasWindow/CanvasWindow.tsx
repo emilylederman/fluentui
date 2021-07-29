@@ -9,7 +9,6 @@ import { DesignerState } from '../../state/state';
 import { BrowserWindow } from './BrowserWindow';
 import { Canvas } from './Canvas';
 import { ErrorBoundary } from './ErrorBoundary';
-import { GetShareableLink } from './GetShareableLink';
 import { JSONTreeElement } from '../types';
 
 export type CanvasWindowProps = {
@@ -83,7 +82,6 @@ export const CanvasWindow: React.FunctionComponent<CanvasWindowProps> = (props: 
                   </Button>
                 </>
               )}
-              {props.state.jsonTreeOrigin === 'store' && <GetShareableLink getShareableLink={props.getShareableLink} />}
               <CodeSandboxExporter
                 exampleCode={codeSandboxData.code}
                 exampleLanguage="js"

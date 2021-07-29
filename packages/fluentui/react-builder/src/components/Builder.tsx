@@ -15,7 +15,6 @@ type onPropChangeArgs = {
 export type BuilderProps = {
   accessibilityErrors: AccessibilityError[];
   activeTab: string;
-  getShareableLink: () => string;
   isExpanding: boolean;
   isSelecting: boolean;
   jsonTree: JSONTreeElement;
@@ -68,7 +67,6 @@ export const Builder: React.FunctionComponent<BuilderProps> = (props: BuilderPro
       />
 
       <CanvasWindow
-        getShareableLink={props.getShareableLink}
         isExpanding={props.isExpanding}
         isSelecting={props.isSelecting}
         onCanvasMouseUp={props.onCanvasMouseUp}

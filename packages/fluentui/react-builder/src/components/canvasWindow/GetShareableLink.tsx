@@ -24,8 +24,8 @@ export const GetShareableLink: React.FunctionComponent<{
       style={style}
       iconOnly
       icon={<LinkIcon outline />}
-      title={'get sharable link'}
-      aria-label={'get sharable link'}
+      title={'get shareable link'}
+      aria-label={'get shareable link'}
       onClick={onCopy}
       disabled={active}
     />
