@@ -37,7 +37,7 @@ export const ComponentList: React.FunctionComponent<ListProps> = ({ onDragStart,
 
   const titleComponent = (Component, { content, expanded, ...rest }) => {
     return (
-      <Component {...rest}>
+      <Component style={{ display: 'block', background: '#d6d6d6', marginBottom: '.25em' }} {...rest}>
         {expanded ? <TriangleDownIcon /> : <TriangleEndIcon />}
         {content}
       </Component>
@@ -105,9 +105,9 @@ export const ComponentList: React.FunctionComponent<ListProps> = ({ onDragStart,
       />
       <div style={{ overflow: 'hidden' }}>
         {filter ? (
-          <Tree items={treeItems} activeItemIds={treeItems.map(e => e.id)} />
+          <Tree styles={{ padding: 0 }} items={treeItems} activeItemIds={treeItems.map(e => e.id)} />
         ) : (
-          <Tree items={treeItems} defaultActiveItemIds={treeItems.map(e => e.id)} />
+          <Tree styles={{ padding: 0 }} items={treeItems} defaultActiveItemIds={treeItems.map(e => e.id)} />
         )}
       </div>
     </div>
