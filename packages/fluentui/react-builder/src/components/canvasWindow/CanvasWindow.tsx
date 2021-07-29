@@ -18,7 +18,6 @@ export type CanvasWindowProps = {
   isSelecting: boolean;
   showJSONTree: boolean;
   state: DesignerState;
-  getShareableLink: () => string;
   onCanvasMouseUp: () => void;
   onCloneComponent: (e: MouseEvent) => void;
   onDeleteSelectedComponent: () => void;
