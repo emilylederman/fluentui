@@ -74,7 +74,6 @@ export const ComponentList: React.FunctionComponent<ListProps> = ({ onDragStart,
                       borderLeft: '2px solid transparent',
                     }}
                   >
-                    {console.log(componentInfo)}
                     {componentInfo.displayName.split(/(?=[A-Z])/).join(' ')}
                   </Box>
                 ),

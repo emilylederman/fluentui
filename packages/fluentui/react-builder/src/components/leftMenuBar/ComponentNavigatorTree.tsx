@@ -213,7 +213,6 @@ export const ComponentNavgiatorTree: React.FunctionComponent<ComponentNavigatorT
       styles={{
         minHeight: '17rem',
         maxHeight: '57rem',
-        overflowY: 'auto',
       }}
     />
   );

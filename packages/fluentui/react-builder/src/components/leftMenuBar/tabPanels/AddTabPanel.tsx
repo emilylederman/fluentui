@@ -8,7 +8,7 @@ export type AddTabPanelProps = {
 export const AddTabPanel: React.FunctionComponent<AddTabPanelProps> = ({ onDragStart }) => {
   return (
     <div>
-      <ComponentList style={{ overflowY: 'auto' }} onDragStart={onDragStart} />
+      <ComponentList onDragStart={onDragStart} />
     </div>
   );
 };

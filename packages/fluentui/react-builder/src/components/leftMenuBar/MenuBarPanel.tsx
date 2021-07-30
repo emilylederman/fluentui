@@ -65,8 +65,44 @@ export const MenuBarPanel: React.FunctionComponent<MenuBarPanelProps> = (props: 
       <AccessibilityIcon size="large" outline />
     );
 
+  const menuBarHeader = (
+    <div
+      style={{
+        alignItems: 'center',
+        display: 'flex',
+        flexFlow: 'row wrap',
+        justifyContent: 'space-between',
+        padding: '0 10px 0 20px',
+        borderBottom: '1px solid #E1DFDD',
+      }}
+    >
+      <Header as="h2" style={{ fontSize: '16px', fontWeight: 'bold' }}>
+        {props.activeTab === 'add'
+          ? 'Add components'
+          : props.activeTab === 'accessibility'
+          ? 'Accessibility'
+          : 'Navigator'}
+      </Header>
+      {props.activeTab === 'accessibility' && props.accessibilityErrors.length !== 0 && (
+        <Label
+          style={{
+            justifyContent: 'center',
+            fontSize: '.75em',
+            userSelect: 'none',
+            MozUserSelect: '-moz-none',
+            WebkitUserSelect: 'none',
+          }}
+          color={'red'}
+          content={`${props.accessibilityErrors.length} Errors`}
+          circular
+          fluid
+        />
+      )}
+    </div>
+  );
+
   return (
-    <div style={{ display: 'flex', minWidth: '1rem', overflow: 'auto' }}>
+    <div style={{ display: 'flex', minWidth: '1rem' }}>
       <Menu
         accessibility={tabListBehavior}
         vertical
@@ -112,6 +148,7 @@ export const MenuBarPanel: React.FunctionComponent<MenuBarPanelProps> = (props: 
         style={{
           display: 'flex',
           flexDirection: 'column',
+          overflow: 'auto',
           minWidth: '22.85rem',
           maxWidth: '25vw',
           transition: 'opacity 0.2s',
@@ -121,22 +158,7 @@ export const MenuBarPanel: React.FunctionComponent<MenuBarPanelProps> = (props: 
           }),
         }}
       >
-        <div
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            padding: '0 10px 0 20px',
-            borderBottom: '1px solid #E1DFDD',
-          }}
-        >
-          <Header as="h2" style={{ fontSize: '16px', fontWeight: 'bold' }}>
-            {props.activeTab === 'add'
-              ? 'Add components'
-              : props.activeTab === 'accessibility'
-              ? 'Accessibility'
-              : 'Navigator'}
-          </Header>
-        </div>
+        {menuBarHeader}
         <div>
           {props.activeTab === 'add' && <AddTabPanel onDragStart={props.onDragStart} />}
           {props.activeTab === 'accessibility' && (
