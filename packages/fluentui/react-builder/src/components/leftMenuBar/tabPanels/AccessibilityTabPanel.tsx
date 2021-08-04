@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { JSONTreeElement } from '../../types';
 import { AccessibilityError } from '../../../accessibility/types';
-import { ComponentNavgiatorTree } from '../ComponentNavigatorTree';
+import { AccessibilityComponentTree } from '../AccessibilityComponentTree';
 
 export type AccessibilityTabPanelProps = {
   accessibilityErrors: AccessibilityError[];
@@ -21,6 +21,7 @@ export const AccessibilityTabPanel: React.FunctionComponent<AccessibilityTabPane
   props: AccessibilityTabPanelProps,
 ) => {
   const currentChildren = props.jsonTree?.props?.children;
+
   const filteredChildren = [];
   if (currentChildren) {
     for (const child of currentChildren) {
@@ -30,7 +31,7 @@ export const AccessibilityTabPanel: React.FunctionComponent<AccessibilityTabPane
     }
   }
 
-  const updatedTree = {
+  const accessibilityErrorTree = {
     uuid: props.jsonTree.uuid,
     type: props.jsonTree.type,
     props: {
@@ -40,7 +41,7 @@ export const AccessibilityTabPanel: React.FunctionComponent<AccessibilityTabPane
 
   return (
     <div>
-      <div style={{ padding: '10px', wordWrap: 'break-word', fontWeight: 'lighter' }}>
+      <div style={{ padding: '15px', wordWrap: 'break-word', fontWeight: 'lighter' }}>
         To learn more about best practices for accessibility, visit{' '}
         <a
           aria-describedby="microsoft accessibility website"
@@ -52,19 +53,17 @@ export const AccessibilityTabPanel: React.FunctionComponent<AccessibilityTabPane
         </a>
         .
       </div>
-      <hr style={{ margin: 'auto', width: '75%' }} />
-      {(!updatedTree || updatedTree?.props?.children?.length === 0) && (
+      <hr style={{ margin: 'auto', width: '75%', marginBottom: 'em' }} />
+      {(!accessibilityErrorTree || accessibilityErrorTree?.props?.children?.length === 0) && (
         <div style={{ padding: '10px' }}>No accessibility errors found.</div>
       )}
-      <ComponentNavgiatorTree
-        onAddComponent={props.onAddComponent}
-        onCloneComponent={props.onCloneComponent}
-        onDeleteSelectedComponent={props.onDeleteSelectedComponent}
-        onMoveComponent={props.onMoveComponent}
-        onSelectComponent={props.onSelectComponent}
-        selectedComponent={props.selectedComponent}
-        tree={updatedTree}
-      />
+      <div>
+        <AccessibilityComponentTree
+          onSelectComponent={props.onSelectComponent}
+          selectedComponent={props.selectedComponent}
+          tree={accessibilityErrorTree}
+        />
+      </div>
     </div>
   );
 };
