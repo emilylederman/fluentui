@@ -368,13 +368,27 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
     }
   }, [enabledVirtualCursor, iframeId, virtualCursorElements]);
 
+  const frameContent = `<!DOCTYPE html>
+    <html>
+    <head>
+    <script async src="https://cdnjs.cloudflare.com/ajax/libs/axe-core/${axeVersion}/axe.min.js"></script>
+    <style>
+    html {font-size: 14px;}
+    </style>
+    </head>
+    <body>
+    <div contenteditable="false" class="frame-root">
+    </div>
+    </body>
+    </html>`;
+
   return (
     <Frame
       title="Designer Canvas"
       frameBorder="0"
       width="100%"
       height="100%"
-      initialContent={`<!DOCTYPE html><html><head><script async src="https://cdnjs.cloudflare.com/ajax/libs/axe-core/${axeVersion}/axe.min.js"></script><style>html {font-size: 14px;}</style></head><body><div class="frame-root"></div></body></html>`}
+      initialContent={frameContent}
       style={style}
       id={iframeId}
     >

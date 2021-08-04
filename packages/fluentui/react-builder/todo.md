@@ -12,6 +12,7 @@
 - [ ] create "frames" on the builder canvas (iPhone, tablet, web, etc.)
 - [ ] add children from parent objects instead of displaying them on the add tab- eg. 'button content' should be
       inherited from 'button'. Could be part of component properties?
+- [ ] add ability to change properties/manipulate objects on right click
 
 ## Development
 
