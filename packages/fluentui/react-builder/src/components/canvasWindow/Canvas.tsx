@@ -10,6 +10,7 @@ import { DropSelector } from './DropSelector';
 import { ReaderNarration } from '../../accessibility/ReaderNarration';
 import { AccessibilityError } from '../../accessibility/types';
 import { AbilityAttributesValidator } from '../../accessibility/AbilityAttributesValidator';
+import { getUUID } from '../../utils/getUUID';
 
 const pkg = require('../../../package.json');
 
@@ -66,7 +67,7 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
 }) => {
   const [hideDropSelector, setHideDropSelector] = React.useState(false);
 
-  const iframeId = React.useMemo(() => `frame-${Math.random().toString(36).slice(2)}`, []);
+  const iframeId = React.useMemo(() => `frame-${getUUID()}`, []);
 
   const [virtualCursorElements, setVirtualCursorElements] = React.useState<HTMLElement[]>([]);
   const [vcIndex, setVcIndex] = React.useState(0);
@@ -307,15 +308,6 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
               ]
                 .filter(Boolean)
                 .join('\n');
-
-              // console.log(
-              //   element,
-              //   '\nHAS\n',
-              //   { isContainer, hasNoChildren, marginTop, marginRight, marginBottom, marginLeft },
-              //   '\nGETS\n',
-              //   properties,
-              // );
-
               return properties.length === 0 ? '' : `[data-builder-id="${builderId}"] {\n${properties}\n}`;
             })
             .filter(Boolean)
@@ -389,7 +381,11 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
       <FrameContextConsumer>
         {({ document, window }) => (
           <>
-            <AbilityAttributesValidator window={window} onErrorsChanged={onWindowAccessibilityErrors} />
+            <AbilityAttributesValidator
+              jsonTree={jsonTree}
+              window={window}
+              onErrorsChanged={onWindowAccessibilityErrors}
+            />
             {(!jsonTree.props?.children || jsonTree.props.children.length === 0) && (
               <div
                 style={{

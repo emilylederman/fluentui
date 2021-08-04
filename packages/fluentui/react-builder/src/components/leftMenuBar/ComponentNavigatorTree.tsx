@@ -4,6 +4,7 @@ import { treeBehavior, treeAsListBehavior } from '@fluentui/accessibility';
 import { JSONTreeElement } from '../types';
 import { jsonTreeFindElement } from '../../config';
 import { CloneDebugButton, TrashDebugButton, MoveDebugButton } from '../DebugButtons';
+import { getUUID } from '../../utils/getUUID';
 
 export type ComponentNavigatorTreeProps = {
   tree: JSONTreeElement;
@@ -62,7 +63,7 @@ const jsonTreeToTreeItems: (
   // todo: test, create function as class?
   if (typeof tree === 'string') {
     return {
-      id: Math.random().toString(36).slice(2),
+      id: getUUID(),
       title: 'string',
     };
   }

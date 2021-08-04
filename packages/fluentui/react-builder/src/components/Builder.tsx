@@ -40,7 +40,6 @@ export type BuilderProps = {
   onSwitchToStore: () => void;
   onWindowAccessibilityErrors: (errors: AccessibilityError[]) => void;
   selectedComponent: JSONTreeElement;
-  selectedComponentAccessibilityErrors: AccessibilityError[];
   selectedComponentInfo: ComponentInfo;
   selectedJSONTreeElement: JSONTreeElement;
   showJSONTree: boolean;
@@ -48,6 +47,14 @@ export type BuilderProps = {
 };
 
 export const Builder: React.FunctionComponent<BuilderProps> = (props: BuilderProps) => {
+  console.log(props.accessibilityErrors);
+  const selectedComponentAccessibilityErrors = React.useMemo(
+    () =>
+      props.selectedComponent
+        ? props.accessibilityErrors?.filter(error => error.elementUuid === props.selectedComponent.uuid)
+        : [],
+    [props.selectedComponent, props.accessibilityErrors],
+  );
   return (
     <div style={{ display: 'flex', flex: 1, minWidth: '10rem', overflow: 'hidden' }}>
       <MenuBarPanel
@@ -64,6 +71,7 @@ export const Builder: React.FunctionComponent<BuilderProps> = (props: BuilderPro
         onSelectComponent={props.onSelectComponent}
         onSwitchTab={props.onSwitchTab}
         selectedComponent={props.selectedComponent}
+        selectedComponentAccessibilityErrors={selectedComponentAccessibilityErrors}
       />
 
       <CanvasWindow
@@ -83,14 +91,14 @@ export const Builder: React.FunctionComponent<BuilderProps> = (props: BuilderPro
         onSourceCodeError={props.onSourceCodeError}
         onWindowAccessibilityErrors={props.onWindowAccessibilityErrors}
         selectedComponent={props.selectedComponent}
-        selectedComponentAccessibilityErrors={props.selectedComponentAccessibilityErrors}
+        selectedComponentAccessibilityErrors={selectedComponentAccessibilityErrors}
         showJSONTree={props.showJSONTree}
         state={props.state}
         onSwitchToStore={props.onSwitchToStore}
       />
 
       <ComponentPropertiesPanel
-        componentAccessibilityErrors={props.selectedComponentAccessibilityErrors}
+        componentAccessibilityErrors={selectedComponentAccessibilityErrors}
         mode={props.mode}
         onPropUpdate={props.onPropUpdate}
         onPropChange={props.onPropChange}

@@ -15,6 +15,7 @@ export type AccessibilityTabPanelProps = {
   onOpenAddComponentDialog?: (uuid: string, where: string) => void;
   onSelectComponent?: (jsonTreeElement: JSONTreeElement) => void;
   selectedComponent?: JSONTreeElement;
+  selectedComponentAccessibilityErrors?: AccessibilityError[];
 };
 
 export const AccessibilityTabPanel: React.FunctionComponent<AccessibilityTabPanelProps> = (
@@ -61,6 +62,7 @@ export const AccessibilityTabPanel: React.FunctionComponent<AccessibilityTabPane
         <AccessibilityComponentTree
           onSelectComponent={props.onSelectComponent}
           selectedComponent={props.selectedComponent}
+          selectedComponentAccessibilityErrors={props.selectedComponentAccessibilityErrors}
           tree={accessibilityErrorTree}
         />
       </div>

@@ -24,6 +24,7 @@ export type MenuBarPanelProps = {
   onSelectComponent?: (jsonTreeElement: JSONTreeElement) => void;
   onSwitchTab?: (tab: any) => void;
   selectedComponent?: JSONTreeElement;
+  selectedComponentAccessibilityErrors?: AccessibilityError[];
 };
 
 export const MenuBarPanel: React.FunctionComponent<MenuBarPanelProps> = (props: MenuBarPanelProps) => {
@@ -173,6 +174,7 @@ export const MenuBarPanel: React.FunctionComponent<MenuBarPanelProps> = (props: 
               onMoveComponent={props.onMoveComponent}
               onSelectComponent={props.onSelectComponent}
               selectedComponent={props.selectedComponent}
+              selectedComponentAccessibilityErrors={props.selectedComponentAccessibilityErrors}
             />
           )}
           {props.activeTab === 'nav' && (

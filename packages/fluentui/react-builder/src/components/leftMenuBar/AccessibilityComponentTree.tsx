@@ -3,10 +3,13 @@ import { TreeItemProps, Tree, Label } from '@fluentui/react-northstar';
 import { treeBehavior, treeAsListBehavior } from '@fluentui/accessibility';
 import { JSONTreeElement } from '../types';
 import { jsonTreeFindElement } from '../../config';
+import { getUUID } from '../../utils/getUUID';
+import { AccessibilityError } from '../../accessibility/types';
 
 export type AccessibilityComponentTreeProps = {
   tree: JSONTreeElement;
   selectedComponent?: JSONTreeElement;
+  selectedComponentAccessibilityErrors?: AccessibilityError[];
   onSelectComponent?: (jsonTreeElement: JSONTreeElement) => void;
 };
 
@@ -30,13 +33,14 @@ const treeKeyDown = isMac ? macKeyDown : undefined;
 const jsonTreeToTreeItems: (
   tree: JSONTreeElement | string,
   selectedComponentId: string,
+  selectedComponentAccessibilityErrors: AccessibilityError[],
   handleSelectedComponent: TreeItemProps['onTitleClick'],
-) => TreeItemProps = (tree, selectedComponentId, handleSelectedComponent) => {
+) => TreeItemProps = (tree, selectedComponentId, selectedComponentAccessibilityErrors, handleSelectedComponent) => {
   // calculate number of accessibility errors
   // todo: test, create function as class?
   if (typeof tree === 'string') {
     return {
-      id: Math.random().toString(36).slice(2),
+      id: getUUID(),
       title: 'string',
     };
   }
@@ -70,9 +74,10 @@ const jsonTreeToTreeItems: (
                   userSelect: 'none',
                   MozUserSelect: '-moz-none',
                   WebkitUserSelect: 'none',
+                  float: 'right',
                 }}
                 color={'red'}
-                content={`${props.accessibilityErrors.length} Errors`}
+                content={`${selectedComponentAccessibilityErrors.length}`}
                 circular
                 fluid
               />
@@ -81,13 +86,16 @@ const jsonTreeToTreeItems: (
         );
       },
     }),
-    items: tree.props?.children?.map(item => jsonTreeToTreeItems(item, selectedComponentId, handleSelectedComponent)),
+    items: tree.props?.children?.map(item =>
+      jsonTreeToTreeItems(item, selectedComponentId, selectedComponentAccessibilityErrors, handleSelectedComponent),
+    ),
   };
 };
 
-export const AccessibilityComponentTree: React.FunctionComponent<ComponentNavigatorTreeProps> = ({
+export const AccessibilityComponentTree: React.FunctionComponent<AccessibilityComponentTreeProps> = ({
   tree,
   selectedComponent,
+  selectedComponentAccessibilityErrors,
   onSelectComponent,
 }) => {
   const handleSelectComponent = React.useCallback(
@@ -106,7 +114,9 @@ export const AccessibilityComponentTree: React.FunctionComponent<ComponentNaviga
 
   const selectedComponentId = selectedComponent?.uuid as string;
   const items: TreeItemProps[] =
-    tree.props?.children?.map(item => jsonTreeToTreeItems(item, selectedComponentId, handleSelectComponent)) ?? [];
+    tree.props?.children?.map(item =>
+      jsonTreeToTreeItems(item, selectedComponentId, selectedComponentAccessibilityErrors, handleSelectComponent),
+    ) ?? [];
   items.forEach(item => getActiveItemIds(item));
 
   return (

@@ -280,11 +280,6 @@ export const Designer: React.FunctionComponent = () => {
     }, 1000);
   }, [handleDesignerLoaded]);
 
-  const selectedComponentAccessibilityErrors = React.useMemo(
-    () => (selectedComponent ? accessibilityErrors?.filter(error => error.elementUuid === selectedComponent.uuid) : []),
-    [selectedComponent, accessibilityErrors],
-  );
-
   const hotkeys = {
     'Ctrl+c': () => {
       if (state.selectedJSONTreeElementUuid && state.selectedJSONTreeElementUuid !== 'builder-root') {
@@ -423,7 +418,6 @@ export const Designer: React.FunctionComponent = () => {
         onSwitchTab={handleSwitchTab}
         onSwitchToStore={handleSwitchToStore}
         selectedComponent={selectedComponent}
-        selectedComponentAccessibilityErrors={selectedComponentAccessibilityErrors}
         selectedComponentInfo={selectedComponentInfo}
         selectedJSONTreeElement={selectedJSONTreeElement}
         showJSONTree={showJSONTree}
