@@ -166,12 +166,6 @@ export const MenuBarPanel: React.FunctionComponent<MenuBarPanelProps> = (props: 
             <AccessibilityTabPanel
               accessibilityErrors={props.accessibilityErrors}
               jsonTree={props.jsonTree}
-              onAddComponent={props.onAddComponent}
-              onCloneComponent={props.onCloneComponent}
-              onDeleteSelectedComponent={props.onDeleteSelectedComponent}
-              onDragStart={props.onDragStart}
-              onOpenAddComponentDialog={props.onOpenAddComponentDialog}
-              onMoveComponent={props.onMoveComponent}
               onSelectComponent={props.onSelectComponent}
               selectedComponent={props.selectedComponent}
               selectedComponentAccessibilityErrors={props.selectedComponentAccessibilityErrors}

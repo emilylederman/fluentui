@@ -224,6 +224,7 @@ export const Designer: React.FunctionComponent = () => {
   const handleCloseAddComponentDialog = React.useCallback(() => {
     dispatch({ type: 'CLOSE_ADD_DIALOG' });
   }, [dispatch]);
+
   const handleAddComponent = React.useCallback(
     (component: string, module: string) => {
       dispatch({ type: 'ADD_COMPONENT', component, module });

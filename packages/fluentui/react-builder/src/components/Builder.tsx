@@ -47,7 +47,6 @@ export type BuilderProps = {
 };
 
 export const Builder: React.FunctionComponent<BuilderProps> = (props: BuilderProps) => {
-  console.log(props.accessibilityErrors);
   const selectedComponentAccessibilityErrors = React.useMemo(
     () =>
       props.selectedComponent

@@ -59,8 +59,6 @@ const jsonTreeToTreeItems: (
   handleAddComponent,
   handleDeleteComponent,
 ) => {
-  // calculate number of accessibility errors
-  // todo: test, create function as class?
   if (typeof tree === 'string') {
     return {
       id: getUUID(),

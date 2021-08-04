@@ -7,12 +7,6 @@ import { AccessibilityComponentTree } from '../AccessibilityComponentTree';
 export type AccessibilityTabPanelProps = {
   accessibilityErrors: AccessibilityError[];
   jsonTree: JSONTreeElement;
-  onAddComponent?: (uuid: string, where: string) => void;
-  onCloneComponent?: ({ clientX, clientY }: { clientX: number; clientY: number }) => void;
-  onDeleteSelectedComponent?: () => void;
-  onDragStart?: (info: any, e: any) => void;
-  onMoveComponent?: ({ clientX, clientY }: { clientX: number; clientY: number }) => void;
-  onOpenAddComponentDialog?: (uuid: string, where: string) => void;
   onSelectComponent?: (jsonTreeElement: JSONTreeElement) => void;
   selectedComponent?: JSONTreeElement;
   selectedComponentAccessibilityErrors?: AccessibilityError[];
