@@ -31,8 +31,7 @@ export const AbilityAttributesValidator: React.FunctionComponent<AbilityAttribut
       window,
       errorReporter: {
         remove(element: HTMLElement) {
-          console.log('remove', element);
-          // setErrors(errors => Object.entries(errors).filter(error => error[0] !== getBuilderId(element)));
+          setErrors(errors => Object.entries(errors).filter(error => error[0] !== getBuilderId(element)));
         },
         report(element: HTMLElement, error: any /* AbilityAttributesError */) {
           setErrors(errors => ({ ...errors, [getBuilderId(element)]: error.message }));
