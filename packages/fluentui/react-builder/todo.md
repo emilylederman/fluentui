@@ -4,7 +4,8 @@
 
 - [ ] generate accessibility spec
 - [ ] store accessibility errors by uuid key
-- [ ] enahnce detail of accessibility tab
+- [ ] enhance detail on accessibility tab
+- [ ] enhance user understanding of accessibility errors/why they matter
 
 ## UI/UX
 
@@ -18,7 +19,9 @@
 
 ## Bugs
 
+- [ ] accessibility errors are not loaded when a component is dragged onto the canvas
 - [ ] component tree collapses an item on click
 - [ ] cannot deselect component by clicking on it
 - [ ] `Form` crashes the builder
 - [ ] Switch to store should remove tree_lz from URL
+- [ ] remove ability attributes errors from removed components
